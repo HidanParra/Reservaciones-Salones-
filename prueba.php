@@ -7,4 +7,4 @@
 
 
 
- <?php /* echo $mod["mod_nom"];*/ ?>
+ <?php echo $mod["mod_nom"]; ?>
