@@ -28,7 +28,7 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
     <!-- Custom CSS -->
     <link href="../assets/libs/flot/css/float-chart.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../assets/extra-libs/multicheck/multicheck.css">
-    <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">    
+    <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../assets/libs/select2/dist/css/select2.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/libs/jquery-minicolors/jquery.minicolors.css">
     <link rel="stylesheet" type="text/css" href="../assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
@@ -43,7 +43,7 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
 
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
-    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'> 
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
     <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
-    <meta HTTP-EQUIV="Expires" CONTENT="-1">    
+    <meta HTTP-EQUIV="Expires" CONTENT="-1">
 </head>
 
 <body>
@@ -85,21 +85,21 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
                             <img style="width: 60%;" src="../assets/images/branding_unid/unid-ico.jpg" alt="homepage" class="light-logo" />
-                           
+
                         </b>
                         <!--End Logo icon -->
                          <!-- Logo text -->
                         <span class="logo-text">
                              <!-- dark Logo text -->
                              <img style="width:60%;" src="../assets/images/branding_unid/unid_logo_blank.png" alt="homepage" class="light-logo" />
-                            
+
                         </span>
                         <!-- Logo icon -->
                         <!-- <b class="logo-icon"> -->
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
                             <!-- <img src="../../assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
-                            
+
                         <!-- </b> -->
                         <!--End Logo icon -->
                     </a>
@@ -119,7 +119,7 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
                     <ul class="navbar-nav float-left mr-auto">
-                        <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a></li>                        
+                        <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a></li>
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
@@ -133,7 +133,7 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
                     <ul class="navbar-nav float-right">
-                                                
+
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -142,7 +142,7 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
                                 <!--<a class="dropdown-item" href="./?mod=2"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>-->
                                 <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#supportModal"><i class="ti-email m-r-5 m-l-5"></i> Soporte</a>
-                                <div class="dropdown-divider"></div>                                
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:close_session();" ><i class="fa fa-power-off m-r-5 m-l-5"></i> Cerrar sesión</a>
                             </div>
                         </li>
@@ -165,11 +165,18 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=1" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Roles</span></a></li>
-                
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=2" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Niveles</span></a></li>
+                      <?php
+                        $modulos = $db->select("modulos",["modulos.mod_nom"]);
+                        foreach ($modulos as $modulos => $mod){
+                          ?>
+                          <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod= 1<?php /*for($i=1;$i<3;$i++){echo $i;}*/?>" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">  <?php echo $mod["mod_nom"]; ?></span></a></li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=3" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Salones</span></a></li>
+                    <?php
+                    }
+                    //<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=1" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Roles</span></a></li>
+                    //<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=2" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Niveles</span></a></li>
+                    //<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=3" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Salones</span></a></li>
+                    ?>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -183,7 +190,7 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-            
+
         <?php
             switch ($_GET["mod"]){
                 case 1:
@@ -194,9 +201,9 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
                 break;
                 case 3:
                 include ("./salones/index.php");
-                break; 
+                break;
                 default:
-                    header("Location: ../auth/404.php"); 
+                    header("Location: ../auth/404.php");
                     //include ("./error/index.php");
                 break;
             }
@@ -210,24 +217,24 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
-                        </div>                    
+                        </div>
                         <form class="form-horizontal">
                             <div class="modal-body">
                                 <div hidden class="alert alert-danger" id="informationAlert" role="alert"></div>
-                                <div class="card-body">                                                                                                                                                              
+                                <div class="card-body">
                                     <div class="form-group row">
                                         <label for="cono1" class=" control-label col-form-label">Mensaje *</label>
                                         <div class="col-sm-12">
                                             <textarea id="messageSupport" class="form-control"></textarea>
                                         </div>
                                     </div>
-                                </div>                            
+                                </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>                        
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                 <button id="contactSupport" type="button" class="btn btn-primary">Enviar</button>
                             </div>
-                        </form>                                        
+                        </form>
                     </div>
                 </div>
             </div>
@@ -276,7 +283,7 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
     <!-- Tables -->
     <script src="../assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
     <script src="../assets/extra-libs/multicheck/jquery.multicheck.js"></script>
-    <script src="../assets/extra-libs/DataTables/datatables.min.js"></script>    
+    <script src="../assets/extra-libs/DataTables/datatables.min.js"></script>
     <!-- Forms -->
     <script src="../assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
     <script src="../dist/js/pages/mask/mask.init.js"></script>
@@ -296,12 +303,12 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
     <!--Custom JavaScript -->
     <script src="../dist/js/custom.min.js"></script>
     <script src="../dist/js/user/_scripts.js"></script>
-     <script src="../data/_support.js"></script>        
-     <script src="./roles/main_roles.js"></script>   
+     <script src="../data/_support.js"></script>
+     <script src="./roles/main_roles.js"></script>
      <script src="./niveles/main_nivel.js"></script>
-     <script src="./salones/main_salones.js"></script>   
-<!--     <script src="./niveles/main_nivel.js"></script>-->   
-    <script>   
+     <script src="./salones/main_salones.js"></script>
+<!--     <script src="./niveles/main_nivel.js"></script>-->
+    <script>
         function close_session(){
           let obj={
               "accion": "close_session"
@@ -309,7 +316,7 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
           $.post("../../includes/funciones.php",obj, function(data){
             location.href="../";
           });
- 
+
       }
     </script>
 </body>
