@@ -63,7 +63,7 @@ $(document).ready(function(){
                 dataType: "json",
                 data: obj,
                 success: function(data){
-                    console.log(data);
+                    
                 }
             })
             $("#modalniveles").modal("hide");
@@ -83,7 +83,7 @@ $(document).ready(function(){
                 id: id
             },
             success: function(data){
-                console.log(data);
+               
             }
         })
         location.reload();
@@ -140,7 +140,6 @@ $(document).ready(function(){
         
          $.post("../../includes/funciones_roles_niveles.php", obj, function(data){       
              $.each(data,function(i,e){
-                 console.log(i,e);
                  let status = "";
                  if(e.niv_Estatus ==  1){
                         status  =  'checked="checked"';

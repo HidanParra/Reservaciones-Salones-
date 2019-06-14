@@ -1,4 +1,5 @@
 <?php  
+
     require_once '_db.php';
     if(isset($_POST["accion"])){
 	    switch ($_POST["accion"]) {
@@ -39,7 +40,7 @@
             break;  
         }
     }
-    //ROLES
+
     function insertar_rol(){
         global $db;
         extract($_POST);
@@ -107,8 +108,7 @@ function mostrar_roles(){
                             $roles = $db->select("Roles","*",["rol_Id[>]" => 3]);
                             echo json_encode($roles);                                                                                                                                                                                      
 }
-    
-//NIVELES
+                                                            
     function insertar_nivel(){
         global $db;
         extract($_POST);

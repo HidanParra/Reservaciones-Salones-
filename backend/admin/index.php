@@ -165,17 +165,15 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
-                      <?php
-                        $modulos = $db->select("modulos",["modulos.mod_nom"]);
-                        foreach ($modulos as $modulos => $mod){
+                    <?php
+                        $modulos = $db->select("modulos",["modulos.mod_id", "modulos.mod_nom"]);
+                        $cont = $db->count("modulos"); 
+                        foreach ($modulos as $key=> $mod){
                           ?>
-                          <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod= 1<?php /*for($i=1;$i<3;$i++){echo $i;}*/?>" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">  <?php echo $mod["mod_nom"]; ?></span></a></li>
+                          <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=<?php echo $mod["mod_id"]; ?>" aria-expanded="false" ><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">  <?php echo $mod["mod_nom"]; ?></span></a></li>
 
                     <?php
-                    }
-                    //<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=1" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Roles</span></a></li>
-                    //<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=2" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Niveles</span></a></li>
-                    //<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=3" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Salones</span></a></li>
+                    } 
                     ?>
                     </ul>
                 </nav>
@@ -193,16 +191,29 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
 
         <?php
             switch ($_GET["mod"]){
-                case 1:
+
+                    case 1:
+                    include ("./proyectores/index.php");
+                break;
+                    case 2:
+                    include ("./accesorios/index.php");
+                break;
+                    case 3:
                     include ("./roles/index.php");
                 break;
-                case 2:
+                    case 4:
                     include ("./niveles/index.php");
                 break;
-                case 3:
-                include ("./salones/index.php");
+                    case 5:
+                    include ("./salones/index.php");
                 break;
-                default:
+                    case 6:
+                    include ("./campus/index.php");
+                break;
+                    case 7:
+                    include ("./usuarios/index.php");
+                break;
+                    default:
                     header("Location: ../auth/404.php");
                     //include ("./error/index.php");
                 break;
@@ -306,7 +317,12 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0 ||$_SESSION['TYPE'] !=1 ){
      <script src="../data/_support.js"></script>
      <script src="./roles/main_roles.js"></script>
      <script src="./niveles/main_nivel.js"></script>
+     <script src="./usuarios/main_usuarios.js"></script>
      <script src="./salones/main_salones.js"></script>
+     <script src="./campus/main_campus.js"></script>
+     <script src="./proyectores/main_proyectores.js"></script>
+     <script src="./accesorios/main_accesorios.js"></script>
+
 <!--     <script src="./niveles/main_nivel.js"></script>-->
     <script>
         function close_session(){
